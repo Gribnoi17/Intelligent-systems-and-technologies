@@ -4,7 +4,7 @@ using HomeWorkKnn.MachineLearning.KNN;
 
 Console.Write("Введите значение K: ");
 var k = int.Parse(Console.ReadLine());
-var knn = new Knn(11);
+var knn = new Knn(k);
 
 var data = CsvReader.LoadDataFromCsv("data.csv");
 MachineLearningHelper.SplitData(data, out var trainData, out var testData, 0.8);
