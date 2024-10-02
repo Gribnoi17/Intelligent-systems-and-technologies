@@ -28,6 +28,6 @@
         /// <summary>
         /// Путь до графа в виде json.
         /// </summary>
-        public static string GraphJsonName = "graph.json";
+        public static string GraphJsonName = "graph2.json";
     }
 }

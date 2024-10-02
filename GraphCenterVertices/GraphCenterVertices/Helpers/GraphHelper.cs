@@ -69,7 +69,7 @@
                return null;
            }
 
-           if (!graph.ContainsKey(endUserId) && !graph.Values.Any(friends => friends.Contains(endUserId)))
+           if (!graph.ContainsKey(endUserId))
            {
                Console.WriteLine($"ID конечного пользователя {endUserId} отсутствует в графе.");
                return null;
@@ -84,18 +84,14 @@
                var path = queue.Dequeue();
                long currentUserId = path[^1];
 
-               if (currentUserId == endUserId)
-               {
-                   return path;
-               }
-
+               // Обрабатываем всех друзей текущего пользователя
                foreach (var friendId in graph[currentUserId])
                {
                    if (!visited.Contains(friendId))
                    {
                        visited.Add(friendId);
                        var newPath = new List<long>(path) { friendId };
-                       
+
                        if (friendId == endUserId)
                        {
                            return newPath;
@@ -109,5 +105,6 @@
            Console.WriteLine("Цепочка друзей не найдена.");
            return null;
        }
+
    }
 }

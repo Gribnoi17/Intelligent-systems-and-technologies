@@ -18,6 +18,10 @@
       <Content Include="graph.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Remove="graph2.json" />
+      <Content Include="graph2.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 

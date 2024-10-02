@@ -63,6 +63,14 @@ namespace GraphCenterVertices.VkApi
             {
                 var friendsOfFriend = await GetVkFriends(friendId);
                 friendsGraph[friendId] = friendsOfFriend;
+
+                foreach (var friendOfFriend in friendsOfFriend)
+                {
+                    if (!friendsGraph.ContainsKey(friendOfFriend))
+                    {
+                        friendsGraph[friendOfFriend] = new List<long>();
+                    }
+                }
                 
                 Console.WriteLine("Список получен, задержка " + count);
                 await Task.Delay(333);
@@ -80,7 +88,7 @@ namespace GraphCenterVertices.VkApi
         private void SaveGraphToJson(Dictionary<long, List<long>> graph)
         {
             var json = JsonConvert.SerializeObject(graph, Formatting.Indented);
-            File.WriteAllText("graph.json", json);
+            File.WriteAllText(Configs.GraphJsonName, json);
         }
     }
 }
